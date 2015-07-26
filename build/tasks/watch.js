@@ -14,6 +14,12 @@ var specPathFromLibPath = function(libFile){
   return specFilePath.replace('.js', '_spec.js'); 
 }
 
+var testFile = function(file){
+  gulp.src(file)
+    .pipe(jasmine({verbose: true, includeStackTrace: true}))
+    .on('error', swallowError);
+}
+
 var swallowError = function(error){
   console.log(error);
   this.emit('end');
@@ -28,8 +34,11 @@ gulp.task('watch-tests', function(){
   gulp.watch('lib/**/*.js', {debounceDelay: 2000}, function(event){
     clearScreen();
     var specFilePath = specPathFromLibPath(event.path);
-    gulp.src(specFilePath)
-      .pipe(jasmine({verbose: true, includeStackTrace: true}))
-      .on('error', swallowError);
+    testFile(specFilePath);
+  });
+
+  gulp.watch('spec/**/*.js', {deboucneDelay: 2000}, function(event){
+    clearScreen();
+    testFile(event.path);
   });
 })
