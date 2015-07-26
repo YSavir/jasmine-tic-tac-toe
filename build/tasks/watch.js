@@ -3,12 +3,13 @@ var gulp = require('gulp'),
     path = require('path'),
     jasmine = require('gulp-jasmine');
 
-var root = path.normalize(__dirname + '../../..'),
-    specPath = path.normalize(root + '/spec'),
-    libPath = path.normalize(root + '/lib');
+//var root = path.normalize(__dirname + '../../..'),
+var root = GLOBAL.rootPath, 
+    specPath = path.normalize(root + '/spec/'),
+    libPath = path.normalize(root + '/lib/');
 
 var specPathFromLibPath = function(libFile){
-  var relativeFilePath = libFile.replace(libPath, '');
+  var relativeFilePath = libFile.replace(root, '');
   var specFilePath =  path.normalize(specPath + relativeFilePath);
   return specFilePath.replace('.js', '_spec.js'); 
 }
