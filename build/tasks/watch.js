@@ -13,11 +13,22 @@ var specPathFromLibPath = function(libFile){
   return specFilePath.replace('.js', '_spec.js'); 
 }
 
+var swallowError = function(error){
+  console.log(error);
+  this.emit('end');
+};
+
+var clearScreen = function(){
+  process.stdout.write("\u001b[2J\u001b[0;0H");
+}
+
 gulp.task('watch-tests', function(){
-  var i = 0
+  // debounce so that Vim doesn't double trigger test with .swp file
   gulp.watch('lib/**/*.js', {debounceDelay: 2000}, function(event){
+    clearScreen();
     var specFilePath = specPathFromLibPath(event.path);
     gulp.src(specFilePath)
-      .pipe(jasmine({verbose: true}));
+      .pipe(jasmine({verbose: true, includeStackTrace: true}))
+      .on('error', swallowError);
   });
 })
