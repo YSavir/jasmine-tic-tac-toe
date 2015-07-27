@@ -4,7 +4,7 @@ describe('TicTacToe.Cell', function(){
   it('should initialize with no value', function(){
     var cell = new TicTacToe.Cell(1, 1);
   
-    expect(cell.value).toBe(null);
+    expect(cell.value).toBeNull();
   });
 
   describe('.coordinates', function(){
