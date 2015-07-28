@@ -1,4 +1,5 @@
-var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
+var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js'),
+    factories = require(GLOBAL.rootPath + 'spec/factories/nexus.js');
 
 describe('TicTacToe.Player()', function(){
   describe('When initialized', function(){
@@ -13,7 +14,6 @@ describe('TicTacToe.Player()', function(){
     describe('with no human option', function(){
       it('should not be human', function(){
         var player = new TicTacToe.Player();
-        console.log(player.human);
 
         expect(player.human).toBe(false);
       });
@@ -28,7 +28,7 @@ describe('TicTacToe.Player()', function(){
     });
 
     describe('with \'O\' as a symbol', function(){
-      it('should ahve \'O\' as a symbol', function(){
+      it('should have \'O\' as a symbol', function(){
         var player = new TicTacToe.Player({symbol: 'O'});
 
         expect(player.symbol).toBe('O');
