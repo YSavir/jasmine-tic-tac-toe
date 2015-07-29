@@ -5,7 +5,14 @@ var Factory = function(name, type, initArgs){
 };
 
 Factory.prototype.build = function(){
-  return new this.type(this.initArgs);
+  // Hacky solution since the usage of 'new' prevents adding arguments with
+  // apply
+  var FactoryInstance = function(){
+    return this.type.apply(this.initArgs);
+  };
+  FactoryInstance.prototype = this.type;
+  
+  return new FactoryInstance(); 
 };
 
 

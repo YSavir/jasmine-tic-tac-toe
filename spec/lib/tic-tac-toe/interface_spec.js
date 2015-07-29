@@ -9,13 +9,13 @@ var path = require('path'),
 // Exact content can be tested via integration tests
 
 describe('TicTacToe.Interfaces.Game', function(){
-  beforeEach(function(){
+  beforeAll(function(){
     jasmine.addMatchers(typeMatchers);
   });
 
   describe('.greeting', function(){
    it('should welcome the player(s)', function(){
-      var interface = Factories.interface.build();
+      var interface = Factories.Interface.build();
 
       expect(interface.greeting()).toBeOfType('string');
     });
@@ -23,7 +23,7 @@ describe('TicTacToe.Interfaces.Game', function(){
 
   describe('.totalPlayers', function(){
     it('should ask how many players will play', function(){
-      var interface = Factories.interface.build();
+      var interface = Factories.Interface.build();
 
       expect(interface.totalPlayers()).toBeOfType('string');
     });
@@ -31,7 +31,7 @@ describe('TicTacToe.Interfaces.Game', function(){
 
   describe('.isPlayerHuman', function(){
     it('should ask if the player is human', function(){
-      var interface = Factories.interface.build();
+      var interface = Factories.Interface.build();
 
       expect(interface.isPlayerHuman()).toBeOfType('string');
     }); 
@@ -39,7 +39,7 @@ describe('TicTacToe.Interfaces.Game', function(){
 
   describe('.pickSymbol', function(){
     it('should ask the player to pick a symbol', function(){
-      var interface = Factories.interface.build();
+      var interface = Factories.Interface.build();
 
       expect(interface.pickSymbol()).toBeOfType('string');
     });

@@ -1,4 +1,5 @@
-var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
+var path = require('path'),
+    TicTacToe = require(path.join(GLOBAL.rootPath, 'lib/tic-tac-toe.js'));
 
 describe('TicTacToe.Cell', function(){
   it('should initialize with no value', function(){
@@ -26,3 +27,4 @@ describe('TicTacToe.Cell', function(){
     });
   });
 });
+

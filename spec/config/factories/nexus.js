@@ -1,18 +1,31 @@
 var path = require('path'),
-    factoriesPath = path.normalize(GLOBAL.rootPath + 'spec/factories/'),
+    Promise = require('promise'),
+    recursiveDir = require('recursive-readdir'),
+    factoriesPath = path.join(GLOBAL.rootPath, 'spec/factories/'),
     factories = {};
 
 var addFactoryFromFile = function(file){
-  var filePath = path.join(factoriesPath, file);
-
   // register each factory according to its name
-  require(filePath).forEach(function(factory){
-    factories[factory.name] = factory;
-  });
+  var fileFactories = require(file);
+  if ( Array.isArray(fileFactories) ) {
+    require(file).forEach(function(factory){
+      factories[factory.name] = factory;
+    });
+  };
 };
 
-require('fs').readdirSync(factoriesPath).forEach(function(file){
-  addFactoryFromFile(file);
+var promise = new Promise(function(resolve, reject){
+  recursiveDir(factoriesPath, function(err, files){
+    if (err) { console.log(err); exit(1) }
+    files.forEach(function(file){
+      addFactoryFromFile(file);
+    });
+    resolve();
+  });
 });
 
-module.exports = factories;
+
+promise.then(function(){
+  module.exports = factories;
+});
+

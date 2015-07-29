@@ -3,13 +3,12 @@ var customMatchers = {};
 customMatchers.toBeOfType = function(util, customEqualityTesters){
   return {
     compare: function(actual, expected){
+      var result = {},
+          actualType = typeof actual;
+
       if (expected === undefined){
         expected = '';
       }
-
-      var result = {};
-
-      var actualType = typeof actual;
 
       result.pass = util.equals(actualType, expected, customEqualityTesters);
 

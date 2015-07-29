@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     path = require('path'),
     jasmine = require('gulp-jasmine');
 
+require('jasmine-spec-reporter');
+
 //var root = path.normalize(__dirname + '../../..'),
 var root = GLOBAL.rootPath, 
     specPath = path.normalize(root + '/spec/'),

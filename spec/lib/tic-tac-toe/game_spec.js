@@ -1,26 +1,31 @@
-var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
+var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js'),
+    Factories = require(GLOBAL.rootPath + 'spec/config/factories/nexus.js');
+
+console.log(Factories);
 
 describe('TicTacToe.Game', function(){
-  var game;
-
-  beforeEach(function(){
-    game = new TicTacToe.Game();
-  });
-  
   describe('When initialized', function(){
     it('should have a game interface', function(){
-      expect(game.interface.constructor).toBe(TicTacToe.Interfaces.Game);
+      var game = new TicTacToe.Game();
+
+      expect(game.interface.constructor).toBe(TicTacToe.Interface);
     });
 
     it('should have an array of players', function(){
+      var game = new TicTacToe.Game();
+
       expect(Array.isArray(game.players)).toBe(true);
     });
 
     it('should not be complete', function(){
+      var game = new TicTacToe.Game();
+
       expect(game.completed).toBe(false);
     });
 
     it('should have a grid', function(){
+      var game = new TicTacToe.Game();
+
       expect(game.grid.constructor).toBe(TicTacToe.Grid);
     });
   });
