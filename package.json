@@ -18,6 +18,7 @@
     "karma": "^0.13.3",
     "karma-jasmine": "^0.3.6",
     "promise": "^7.0.3",
+    "prompt": "^0.2.14",
     "recursive-readdir": "^1.2.1",
     "require-dir": "^0.3.0",
     "requirejs": "^2.1.19",

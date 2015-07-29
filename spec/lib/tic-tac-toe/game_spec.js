@@ -1,4 +1,5 @@
-var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
+var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js'),
+    helpers = require(GLOBAL.rootPath + 'spec/helpers/input_helpers.js');
 
 describe('TicTacToe.Game', function(){
   describe('When initialized', function(){
@@ -44,6 +45,38 @@ describe('TicTacToe.Game', function(){
 
         expect(game.interface.pickSymbol).toHaveBeenCalled();
       });
+    });
+  });
+
+  describe('.addPlayerThroughConsole', function(){
+    // Hijack stdin so that we can fabricate console inputs
+    var originalStdin;
+    beforeAll(function(){
+      // originalStdin = process.stdin;
+      // process.setMaxListeners(0);
+    });
+
+    afterEach(function(){
+      // process.stdin = originalStdin;
+    });
+
+    it('should add a player through console input', function(){
+      // ***************
+      // NOTE: Return to test computer player symbols once computer players
+      // are able to choose their own symbol
+      // ***************
+      var game = new TicTacToe.Game(),
+          playerDetails = function(player) {
+            return [player.human, player.symbol];
+          };
+
+      helpers.setInput(['yes', 'X']);
+      game.addPlayerThroughConsole();
+      helpers.setInput(['yes', 'O']);
+      game.addPlayerThroughConsole();
+       
+      expect(playerDetails(game.players[0])).toEqual([true, 'X']);
+      expect(playerDetails(game.players[1])).toEqual([true, 'O']);
     });
   });
 
