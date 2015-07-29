@@ -2,7 +2,7 @@ var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
 
 describe('TicTacToe.Player()', function(){
   describe('When initialized', function(){
-    describe('as a computer player', function(){
+    describe('as a human player', function(){
       it('should be human', function(){
         var player = new TicTacToe.Player({human: true});
 
@@ -15,6 +15,16 @@ describe('TicTacToe.Player()', function(){
         var player = new TicTacToe.Player();
 
         expect(player.human).toBe(false);
+      });
+    });
+
+    describe('with an invalid human option', function(){
+      it('should raise an error', function(){
+        var functionToError = function(){
+          new TicTacToe.Player({human: 'foo'});
+        }
+
+        expect(functionToError).toThrow(new Error("Human option must be boolean"));
       });
     });
 
