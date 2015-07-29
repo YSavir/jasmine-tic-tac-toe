@@ -6,10 +6,6 @@ customMatchers.toBeOfType = function(util, customEqualityTesters){
       var result = {},
           actualType = typeof actual;
 
-      if (expected === undefined){
-        expected = '';
-      }
-
       result.pass = util.equals(actualType, expected, customEqualityTesters);
 
       if (result.pass){
