@@ -1,7 +1,4 @@
-var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js'),
-    Factories = require(GLOBAL.rootPath + 'spec/config/factories/nexus.js');
-
-console.log(Factories);
+var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
 
 describe('TicTacToe.Game', function(){
   describe('When initialized', function(){
@@ -32,6 +29,7 @@ describe('TicTacToe.Game', function(){
 
   describe('.getPlayerDetails', function(){
     it('should ask if the player will be human', function(){
+      var game = new TicTacToe.Game();
       spyOn(game.interface, 'isPlayerHuman');
       game.getPlayerDetails();
 
@@ -40,6 +38,7 @@ describe('TicTacToe.Game', function(){
 
     describe('and the player is human', function(){
       it('should ask what symbol the player will use', function(){
+        var game = new TicTacToe.Game();
         spyOn(game.interface, 'pickSymbol');
         game.getPlayerDetails();
 

@@ -1,5 +1,4 @@
-var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js'),
-    factories = require(GLOBAL.rootPath + 'spec/config/factories/nexus.js');
+var TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
 
 describe('TicTacToe.Player()', function(){
   describe('When initialized', function(){

@@ -1,7 +1,7 @@
 var path = require('path'),
     specPath = path.join(GLOBAL.rootPath, 'spec/'),
-    Factories = require(specPath + 'config/factories/nexus.js'),
-    typeMatchers = require(specPath + 'helpers/type_helpers.js');
+    typeMatchers = require(specPath + 'helpers/type_helpers.js'),
+    TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
 
 // Tests validate that the output is a string
 // String contents are not checked to avoid needing a test update
@@ -14,8 +14,8 @@ describe('TicTacToe.Interfaces.Game', function(){
   });
 
   describe('.greeting', function(){
-   it('should welcome the player(s)', function(){
-      var interface = Factories.Interface.build();
+   it('shopuld welcome the player(s)', function(){
+      var interface = new TicTacToe.Interface();
 
       expect(interface.greeting()).toBeOfType('string');
     });
@@ -23,7 +23,7 @@ describe('TicTacToe.Interfaces.Game', function(){
 
   describe('.totalPlayers', function(){
     it('should ask how many players will play', function(){
-      var interface = Factories.Interface.build();
+      var interface = new TicTacToe.Interface();
 
       expect(interface.totalPlayers()).toBeOfType('string');
     });
@@ -31,7 +31,7 @@ describe('TicTacToe.Interfaces.Game', function(){
 
   describe('.isPlayerHuman', function(){
     it('should ask if the player is human', function(){
-      var interface = Factories.Interface.build();
+      var interface = new TicTacToe.Interface();
 
       expect(interface.isPlayerHuman()).toBeOfType('string');
     }); 
@@ -39,7 +39,7 @@ describe('TicTacToe.Interfaces.Game', function(){
 
   describe('.pickSymbol', function(){
     it('should ask the player to pick a symbol', function(){
-      var interface = Factories.Interface.build();
+      var interface = new TicTacToe.Interface();
 
       expect(interface.pickSymbol()).toBeOfType('string');
     });
