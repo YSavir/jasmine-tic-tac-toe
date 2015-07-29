@@ -1,18 +1,14 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     path = require('path'),
-    jasmine = require('gulp-jasmine');
-
-require('jasmine-spec-reporter');
-
-//var root = path.normalize(__dirname + '../../..'),
-var root = GLOBAL.rootPath, 
-    specPath = path.normalize(root + '/spec/'),
-    libPath = path.normalize(root + '/lib/');
+    jasmine = require('gulp-jasmine'),
+    root = GLOBAL.rootPath, 
+    specPath = path.normalize(root + '/spec/');
 
 var specPathFromLibPath = function(libFile){
-  var relativeFilePath = libFile.replace(root, '');
-  var specFilePath =  path.normalize(specPath + relativeFilePath);
+  var relativeFilePath = libFile.replace(root, ''),
+      specFilePath = path.join(specPath, relativeFilePath);
+
   return specFilePath.replace('.js', '_spec.js'); 
 }
 
