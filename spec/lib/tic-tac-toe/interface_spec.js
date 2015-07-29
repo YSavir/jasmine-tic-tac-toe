@@ -1,6 +1,6 @@
 var path = require('path'),
     specPath = path.join(GLOBAL.rootPath, 'spec/'),
-    typeMatchers = require(specPath + 'helpers/type_helpers.js'),
+    typeMatchers = require(specPath + 'helpers/type_matchers.js'),
     TicTacToe = require(GLOBAL.rootPath + 'lib/tic-tac-toe.js');
 
 // Tests validate that the output is a string

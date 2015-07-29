@@ -49,8 +49,16 @@ describe('TicTacToe.Game', function(){
 
   describe('.addPlayer', function(){
     it('should add a new player', function(){
-      var game = new TicTacToe.Game();
+      var game = new TicTacToe.Game(),
+          playerDetails = function(player) {
+            return [player.human, player.symbol];
+          };
 
+      game.addPlayer(true, 'X');
+      game.addPlayer(false, 'O');
+
+      expect(playerDetails(game.players[0])).toEqual([true, 'X']);
+      expect(playerDetails(game.players[1])).toEqual([false, 'O']);
     });
   });
 });
